@@ -5,6 +5,7 @@ function App() {
   const [task, setTask] = useState("")
   const [description, setDescription] = useState("")
   const [taskList, setTaskList] = useState([])
+  const [done, setDone] = useState("Mark as Done !")
 
   const handleTaskChange = (event) => {
     setTask(event.target.value)
@@ -26,11 +27,21 @@ function App() {
     }
   }
 
+  const handleDone = () => {
+    if (done === "Mark as Done !") {
+      setDone("Completed")
+    }
+    else {
+      setDone("Mark as Done !")
+    }
+    
+  }
+
   return (
     <>
       <div className="container">
 
-        <h1 class="heading">ToDo App</h1>
+        <h1 class="heading text-emerald-900">ToDo App</h1>
 
         <input 
           type="text" 
@@ -48,11 +59,12 @@ function App() {
 
         <div className="ToDo-container">
           <h3>Tasks List</h3>
-          <ul>
+          <ul className="taskList">
             {taskList.map((event, index) => (
               <li key={index}>
-                <strong>Task : </strong> {event.task} <br />
-                <strong>Description : </strong> {event.description}
+                <strong>Task : </strong> {event.task} 
+                <strong>Description : </strong> {event.description} 
+                <button onClick={handleDone}>{done}</button>
               </li>
             ))}
           </ul>
