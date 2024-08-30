@@ -39,32 +39,46 @@ function App() {
 
   return (
     <>
-      <div className="container">
+      <div className="container flex flex-col justify-center items-center m-20">
 
-        <h1 class="heading text-emerald-900">ToDo App</h1>
+        <h1 class="heading text-emerald-200 text-shadow-xl text-4xl font-bold m-8 p-4">ToDo App</h1>
 
-        <input 
+        <input
+          className='task-input' 
           type="text" 
           value={task} 
           onChange={handleTaskChange} 
           placeholder='Enter Task' />
 
-        <input 
+        <input
+          className='task-input' 
           type="text" 
           value={description} 
           onChange={handleDescriptionChange} 
           placeholder='Enter Description' />
 
-        <button onClick={handleSubmit}>Sumbit</button>
+        <button 
+          className='task-input button  text-emerald-900' 
+          onClick={handleSubmit}>
+            Sumbit
+        </button>
+
 
         <div className="ToDo-container">
-          <h3>Tasks List</h3>
-          <ul className="taskList">
+
+        <h3 className='text-xl text-center font-bold text-emerald-900 pb-4'>Tasks List</h3>
+          
+          <ul>         
             {taskList.map((event, index) => (
-              <li key={index}>
-                <strong>Task : </strong> {event.task} 
-                <strong>Description : </strong> {event.description} 
-                <button onClick={handleDone}>{done}</button>
+              <li key={index} className='task-list'>
+                <p>Task : {event.task}</p>
+                <p>Description : {event.description}</p>
+
+                <button 
+                  className='button px-4 py-2 mt-2 mb-4 bg-emerald-900 text-emerald-200' 
+                  onClick={handleDone}> 
+                    {done} 
+                  </button>
               </li>
             ))}
           </ul>

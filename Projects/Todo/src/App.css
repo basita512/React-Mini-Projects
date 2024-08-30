@@ -1,17 +1,16 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+.task-input {
+  @apply px-4 py-2 shadow-md m-2 bg-emerald-100 text-emerald-950 font-semibold
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 50px;
+.ToDo-container {
+  @apply m-6 py-4 px-10 bg-emerald-200 rounded-md
 }
 
-.taskList {
-  display: flex;
-  flex-direction: row;
+.task-list {
+  @apply flex flex-col text-emerald-900 font-semibold
+}
+
+.button {
+  @apply font-semibold 
+  hover:shadow-lg hover:shadow-emerald-600 bg-emerald-200 rounded-xl
 }
