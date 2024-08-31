@@ -1,16 +1,36 @@
-.task-input {
-  @apply px-4 py-2 shadow-md m-2 bg-emerald-100 text-emerald-950 font-semibold
-}
 
-.ToDo-container {
-  @apply m-6 py-4 px-10 bg-emerald-200 rounded-md
-}
+  .task-input {
+    @apply px-4 py-2 shadow-md m-2 bg-emerald-100 text-emerald-950 font-semibold placeholder-emerald-700
+           border-4 focus:border-emerald-600 focus:outline-none
+          /* Responsive Styles */
+          sm:px-6 sm:py-3 sm:text-lg 
+          md:px-8 md:py-4 md:text-xl 
+          lg:px-10 lg:py-5 lg:text-2xl; 
+  }
+  
+  .ToDo-container {
+    @apply m-6 py-4 px-10 bg-emerald-200 rounded-md
+          /* Responsive Styles */
+          sm:m-8 sm:py-6 sm:px-12 
+          md:m-10 md:py-8 md:px-16 
+          lg:m-12 lg:py-10 lg:px-20 
+  }
+  
+  .task-list {
+    @apply flex flex-col text-emerald-900 font-semibold 
+          /* Responsive Styles */
+          sm:text-lg 
+          md:text-xl 
+          lg:text-2xl 
+  }
+  
+  .button {
+    @apply font-semibold 
+    hover:shadow-md hover:shadow-emerald-600 bg-emerald-200 rounded-xl  
+          /* Responsive Styles */
+          sm:px-6 sm:py-2 
+          md:px-8 md:py-3 
+          lg:px-10 lg:py-4 
+  }
 
-.task-list {
-  @apply flex flex-col text-emerald-900 font-semibold
-}
 
-.button {
-  @apply font-semibold 
-  hover:shadow-lg hover:shadow-emerald-600 bg-emerald-200 rounded-xl
-}
