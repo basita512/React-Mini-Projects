@@ -46,9 +46,9 @@ function App() {
       <div className="container flex flex-col justify-center items-center m-6 sm:m-8 md:m-10 lg:m-12">
 
         <h1 class="heading text-emerald-200 text-shadow-xl font-bold
-                  text-3xl sm:text-3xl md:text-4xl lg:text-5xl 
-                  m-4 sm:m-6 md:m-8 lg:m-10 
-                  p-4 sm:p-6 md:p-8 lg:p-10">
+                   sm:text-4xl md:text-5xl lg:text-6xl 
+                   sm:m-4 md:m-6 lg:m-8 
+                   sm:p-4 md:p-6 lg:p-8">
           ToDo App
         </h1>
 
