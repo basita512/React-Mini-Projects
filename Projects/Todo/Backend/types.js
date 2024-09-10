@@ -3,11 +3,11 @@ const zod = require("zod")
 
 const app = express()
 const schema = zod.array(zod.number());
-app.use(express.json)
+app.use(express.json())
 
 const createTodo = zod.object({
-    title : zod.string().title(),
-    description : zod.string().description()
+    Title : zod.string(),
+    Description : zod.string()
 })
 
 const updateTodo = zod.object({

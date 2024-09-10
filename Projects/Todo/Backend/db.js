@@ -1,6 +1,10 @@
 const mongoose = require("mongoose")
 
-mongoose.connect("mongodb://127.0.0.1:27017/Todo App")
+const DB_URL = "mongodb://127.0.0.1:27017/TodoApp"
+mongoose.connect(DB_URL)
+    .then(() => console.log("Connected to Database"))
+    .catch(err => console.error("Error connecting Database: ", err))
+
 
 const ToDoSchema = new mongoose.Schema({
     Title: {
