@@ -71,4 +71,19 @@ app.put('/completed', async (req, res) => {
 })
 
 
+/*---------------------------- Delete Todos *----------------------------* */
+app.delete('/todo/:id', async (req, res) => {
+    const taskID = req.params.id
+    try {
+        await todo.deleteOne({ _id : taskID })
+        res.json({
+            msg : 'Todo deleted succesfully'
+        })
+    } catch (error) {
+        res.status(500).json({
+            msg : 'Error deleting Todo', error
+        })
+    }
+})
+
 app.listen(3000, () => console.log("Server Up !"))
