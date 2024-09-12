@@ -1,11 +1,10 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 
 function App() {
   const [task, setTask] = useState("")
   const [description, setDescription] = useState("")
   const [taskList, setTaskList] = useState([])
-  //const [done, setDone] = useState("Mark as Done !")
   const [showTodo, setShowTodo] = useState(false)
 
   const handleTaskChange = (event) => {
@@ -22,24 +21,80 @@ function App() {
     event.preventDefault(); // prevent page reload after submission
 
     if (task && description) {
-      setTaskList([...taskList, { task, description, completed:false }])
-      setTask("")
-      setDescription("") // Clearing the input field
-      setShowTodo(true) // todo container will appear
+      // Preparing data to send
+      const data = {
+        Title : task,
+        Description : description
+      }
     }
-  }
+
+    // Sending data to backend using fetch
+    fetch('http://localhost:3000/todo', {
+      method : 'POST',
+      headers : { 'Content-Type' : 'application/json' }, //setting content type to json  
+      body : JSON.stringify(data) // converting Data object into JSON string
+    })
+    .then(response => response.json()) //parse the response as json
+    .then(data => {
+      console.log('Success: ', data)
+    })
+
+    // Updating UI after succesful POST req
+    setTaskList([...taskList, { task, description, completed:false }])
+    setTask("")
+    setDescription("") // Clearing the input field
+    setShowTodo(true) // todo container will appear
+    
+  .catch((error) => {
+    console.error('Error: ', error)
+  })
+ }
+
+
+// Fetching data from the backend when the component loads
+useEffect(() => {
+  fetch('http://localhost:3000/show') //get req backend call
+    .then(response => response.json()) //conerting response into JSON
+    .then(data => {
+      setTaskList(data.result) // updating the state of tasklist with the data from backend
+      setShowTodo(true) // show task list if there are tasks
+    })
+    .catch(error => console.error('Erroe fetching tasks: ', error))
+}, []) // Empty dependency array ensures this runs only once, when the component mounts
+
 
   const handleDone = (index_of_Todo) => {
-    const updatedTaskList = taskList.map((task_items, pointer) => {
+    const taskToMarkDone = taskList[index_of_Todo]
+
+    // Send PUT request to the backend to upate task status
+    fetch('http://localhost:3000/completed', {
+      method : 'PUT',
+      headers : { 'Content-Type': 'application/json' },
+      body : JSON.stringify({ id: taskToMarkDone._id })
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('Success', data)
+
+      //Update the UI after marking task as completed in the backend
+      const updatedTaskList = taskList.map((task_items, pointer) => {
         if (pointer === index_of_Todo) {
           return { ...task_items, completed: !task_items.completed } // completed was false, it will become true and vice versa
         }
         else {
           return task_items
         }  
-    }) 
-    setTaskList(updatedTaskList)
+      }) 
+      setTaskList(updatedTaskList)
+    })
+    .catch(error => {
+      console.error('Error', error)
+    })   
   }
+
+
+  
+
 
   return (
     <>

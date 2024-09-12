@@ -1,9 +1,11 @@
 const express = require("express")
+const cors = require("cors")
 const { createTodo, updateTodo } = require("./types")
 const { todo } = require("./db")
 
 const app = express()
 app.use(express.json())
+app.use(cors()) //cors allow to host backend to everyone like mobile postman else it will only allow localhost only
 
 
 /*---------------------Printing the User Request------------------------ */
@@ -65,5 +67,6 @@ app.put('/completed', async (req, res) => {
         msg: "ToDo marked as Completed !"
     })
 })
+
 
 app.listen(3000, () => console.log("Server Up !"))
