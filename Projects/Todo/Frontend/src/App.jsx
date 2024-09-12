@@ -26,40 +26,49 @@ function App() {
         Title : task,
         Description : description
       }
+
+        // Sending data to backend using fetch
+        fetch('http://localhost:3000/todo', {
+          method : 'POST',
+          headers : { 'Content-Type' : 'application/json' }, //setting content type to json  
+          body : JSON.stringify(data) // converting Data object into JSON string
+        })
+        .then(response => response.json()) //parse the response as json
+        .then(data => {
+          console.log('Success: ', data)
+        })
+
+        // Updating UI after succesful POST req
+        setTaskList([{ Title: task, Description: description, Completed: false }, ...taskList])
+        setTask("")
+        setDescription("") // Clearing the input field
+        setShowTodo(true) // todo container will appear
+        
+      .catch((error) => {
+        console.error('Error: ', error)
+      })
     }
-
-    // Sending data to backend using fetch
-    fetch('http://localhost:3000/todo', {
-      method : 'POST',
-      headers : { 'Content-Type' : 'application/json' }, //setting content type to json  
-      body : JSON.stringify(data) // converting Data object into JSON string
-    })
-    .then(response => response.json()) //parse the response as json
-    .then(data => {
-      console.log('Success: ', data)
-    })
-
-    // Updating UI after succesful POST req
-    setTaskList([...taskList, { task, description, completed:false }])
-    setTask("")
-    setDescription("") // Clearing the input field
-    setShowTodo(true) // todo container will appear
-    
-  .catch((error) => {
-    console.error('Error: ', error)
-  })
- }
+    else {
+      alert("Task or Description missing")
+    }
+  }
 
 
 // Fetching data from the backend when the component loads
 useEffect(() => {
-  fetch('http://localhost:3000/show') //get req backend call
-    .then(response => response.json()) //conerting response into JSON
-    .then(data => {
+  const fetchTasks = async () => {
+    try {
+      const response = await fetch('http://localhost:3000/show') //get req backend call
+      const data = await response.json() //converting response into JSON
       setTaskList(data.result) // updating the state of tasklist with the data from backend
       setShowTodo(true) // show task list if there are tasks
-    })
-    .catch(error => console.error('Erroe fetching tasks: ', error))
+    }
+    catch (error) {
+      console.error('Error fetching tasks: ', error)
+    }
+  }
+  
+  fetchTasks() // Calling the function when function mounts
 }, []) // Empty dependency array ensures this runs only once, when the component mounts
 
 
@@ -70,7 +79,7 @@ useEffect(() => {
     fetch('http://localhost:3000/completed', {
       method : 'PUT',
       headers : { 'Content-Type': 'application/json' },
-      body : JSON.stringify({ id: taskToMarkDone._id })
+      body : JSON.stringify({ id: taskToMarkDone._id, Completed: !taskToMarkDone.Completed })
     })
     .then(response => response.json())
     .then(data => {
@@ -79,7 +88,7 @@ useEffect(() => {
       //Update the UI after marking task as completed in the backend
       const updatedTaskList = taskList.map((task_items, pointer) => {
         if (pointer === index_of_Todo) {
-          return { ...task_items, completed: !task_items.completed } // completed was false, it will become true and vice versa
+          return { ...task_items, Completed: !task_items.Completed } // completed was false, it will become true and vice versa
         }
         else {
           return task_items
@@ -91,9 +100,6 @@ useEffect(() => {
       console.error('Error', error)
     })   
   }
-
-
-  
 
 
   return (
@@ -124,7 +130,7 @@ useEffect(() => {
         <button 
           className='task-input button  text-emerald-900' 
           onClick={handleSubmit}>
-            Sumbit
+            Submit
         </button>
 
 
@@ -135,13 +141,13 @@ useEffect(() => {
             <ul>         
               {taskList.map((event, index_of_Todo) => (
                 <li key={index_of_Todo} className='task-list'>
-                  <p>Task : {event.task}</p>
-                  <p>Description : {event.description}</p>
+                  <p>Task : {event.Title}</p>
+                  <p>Description : {event.Description}</p>
   
                   <button 
                     className='button px-4 py-2 mt-2 mb-4 bg-emerald-900 text-emerald-200' 
                     onClick={() => handleDone(index_of_Todo)}> 
-                      {event.completed ? "Completed !" : "Mark as Done"} 
+                      {event.Completed ? "Completed !" : "Mark as Done"} 
                   </button>
                 </li>
               ))}

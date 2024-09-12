@@ -43,7 +43,7 @@ app.post('/todo', async (req, res) => {
 })
 
 
-/*---------------`------------Updating Todos -------------------------------*/
+/*----------------------------Updating Todos -------------------------------*/
 // {
 //     "id": "66dfee339e6271b174a1319f" put this in body
 // }
@@ -59,13 +59,15 @@ app.put('/completed', async (req, res) => {
         return
     }
 
-    await todo.updateOne(
+    const updatedTodo = await todo.updateOne(
         { _id: req.body.id },
-        { Completed : true }
+        { Completed : req.body.Completed }
     )
     res.json({
-        msg: "ToDo marked as Completed !"
+        msg: "ToDo marked as Completed !",
+        todo: updatedTodo
     })
+
 })
 
 
