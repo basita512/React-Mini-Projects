@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: black;
+    color: white;
+}
+
+.calculator {
+    @apply  grid relative grid-cols-4 gap-3 p-8 bg-black rounded-lg shadow-2xl shadow-[#171515cb] border-2 border-[#171515cb]
+}
+
+.button {
+    @apply font-bold rounded-full p-6 text-2xl text-white text-center bg-[#171515cb] active:bg-[#363333cb] 
+}
+
+.input {
+    @apply  col-span-4 text-right text-4xl p-4 bg-black text-white m-4 placeholder-[#171515cb] focus:border-[#171515cb]
+            focus:outline-none
+}
+
+.symbol {
+    @apply text-green-500
+}
+
+.clear {
+    @apply bg-amber-600 active:bg-amber-500
+}
+
+.equal {
+    @apply text-white bg-green-700 active:bg-green-600
+}
