@@ -1,12 +1,23 @@
 import React from 'react'
 
-const Single_Card = () => {
+const SingleCard = ({course}) => {
   return (
     <div className='card'>
-      <div className="display"></div>
-      <div className="description"></div>
+
+      <div className="display">
+        <img src={course.image.url} alt={course.image.alt} />
+        <div className="like">
+          <button>
+            
+          </button>
+        </div>
+      </div>
+
+      <div className="description">
+
+      </div>
     </div>
   )
 }
 
-export default Single_Card
+export default SingleCard
