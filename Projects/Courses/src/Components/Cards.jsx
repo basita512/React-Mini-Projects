@@ -1,6 +1,8 @@
 import React from 'react'
+import SingleCard from './Single-Card'
 
-const Cards = ({courses}) => {
+const Cards = (props) => {
+  let courses = props.courses
 
   // putting all courses names in single array (not key only the values of object)
   let allCourses = []
@@ -15,10 +17,10 @@ const Cards = ({courses}) => {
 
 
   return (
-    <div>
-      { getCourses().map( (course) => {
-        <SingleCard course={course} />
-      })}
+    <div className='flex flex-wrap justify-center'>
+      { getCourses().map( (course) => (
+        <SingleCard key={course.id} course={course} />
+      ))}
     </div>
   )
 }

@@ -6,10 +6,29 @@
 /*********** Filter.jsx ***********/
 
 .filter-bar {
-    @apply flex flex-row justify-center
+    @apply flex flex-wrap justify-center max-w-max space-x-4 gap-y-4 mx-auto
 }
 
 .filter-btn {
-    @apply my-2 mx-4 py-2 px-3 bg-[#131840c1] rounded-sm text-white
+    @apply my-2 mx-4 py-2 px-3 rounded-md font-medium text-white
             hover:bg-opacity-50 bg-black transition-all duration-300
+}
+
+
+/*********** Spinner.jsx ************/
+
+.spinner {
+   width: 56px;
+   height: 56px;
+   border-radius: 50%;
+   background: radial-gradient(farthest-side,#474bff 94%,#0000) top/9px 9px no-repeat,
+                conic-gradient(#0000 30%,#474bff);
+   mask: radial-gradient(farthest-side,#0000 calc(100% - 9px),#000 0);
+   animation: spinner-c7wet2 1s infinite linear;
+}
+
+@keyframes spinner-c7wet2 {
+   100% {
+      transform: rotate(1turn);
+   }
 }
