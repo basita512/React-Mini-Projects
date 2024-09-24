@@ -5,7 +5,7 @@ const Spinner = () => {
   return (
     <div className="flex flex-col justify-center space-y-2">
         <div className='spinner'></div>
-        <p className='text-blue-950 text-lg font-semibold'>Loading...</p>
+        <p className='text-white text-lg font-semibold'>Loading...</p>
     </div>
     
   )

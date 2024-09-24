@@ -9,8 +9,9 @@ import Spinner from './Components/Spinner'
 
 
 function App() {
-  const[courses, setCourses] = useState()
-  const[loading, setLoading] = useState(true)
+  const [courses, setCourses] = useState()
+  const [loading, setLoading] = useState(true)
+  const [category, setCategory] = useState(filterData[0].title)
 
   useEffect( () => {
     const fetchData = async () => {
@@ -30,18 +31,24 @@ function App() {
   return (
     <>
     <div className="min-h-screen flex flex-col bg-slate-800">
+
       <div className="nav">
         <NavBar />
       </div>
+
       <div className="filter">
-        <Filter filterData={filterData} />
+        <Filter filterData={filterData}
+                category={category}
+                setCategory={setCategory} />
       </div>
+
       <div className="cards w-11/12 max-w-[1200px] mx-auto flex flex-wrap justify-center items-center min-h-[50vh]">
         {/* if we dont add the loader logic code wont run, code fatt jaega */}
         {
-          loading ? (<Spinner />) : (<Cards courses={courses}/>)
+          loading ? (<Spinner />) : (<Cards courses={courses} category={category}/>)
         }
       </div>
+
     </div>
       
     </>

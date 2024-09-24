@@ -33,10 +33,12 @@ const SingleCard = (props) => {
 
       <div className="image relative">
         <img src={course.image.url} alt={course.image.alt} />
-        <div className="like absolute grid place-items-center rounded-full bg-white w-12 h-12 right-2 bottom-4">
+        <div className="like absolute grid place-items-center rounded-full bg-slate-700 w-12 h-12 right-2 bottom-[-20px]">
           <button onClick={handleLike}>           
             {
-              likedCourses.includes(course.id) ? (<FcLike font-size="1.75rem"/>) : (<FcLikePlaceholder font-size="1.75rem"/>)
+              likedCourses.includes(course.id) ? 
+              (<FcLike font-size="1.75rem"/>) 
+              : (<FcLikePlaceholder font-size="1.75rem"/>)
             }
           </button>   
         </div>
@@ -44,7 +46,13 @@ const SingleCard = (props) => {
         
       <div className="paragraph p-4">
         <p className='text-2xl font-bold'>{course.title}</p>
-        <p className='pt-3'>{course.description}</p>
+        <p className='pt-3'>
+          {
+            course.description.length > 100 ? 
+            (course.description.substr(0,100)) + "..." 
+            : (course.description)
+          }
+        </p>
       </div>
 
     </div>

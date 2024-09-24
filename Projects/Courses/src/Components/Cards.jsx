@@ -3,17 +3,26 @@ import SingleCard from './Single-Card'
 
 const Cards = (props) => {
   let courses = props.courses
+  let category = props.category
   const [likedCourses, setLikedCourses] = useState([])
 
   // putting all courses names in single array (not key only the values of object)
   let allCourses = []
   const getCourses = () => {
-    Object.values(courses).forEach( (courseCategory) => {
-      courseCategory.forEach( (singleCourse) => {
-        allCourses.push(singleCourse)
+
+    if (category === "All") {
+      Object.values(courses).forEach( (courseCategory) => {
+        courseCategory.forEach( (singleCourse) => {
+          allCourses.push(singleCourse)
+        }) 
       })
-    })
-    return allCourses
+      return allCourses
+
+    } else {
+      // selected category ka array deisplay karenge
+      return courses[category]
+    }
+    
   }
 
 
