@@ -6,19 +6,20 @@ const Testimonials = (props) => {
     let reviews = props.reviews
 
     return (
-        <div>
+        <div className='bg-[#f7e77b] w-[85vw] md:w-[700px] flex flex-col justify-center items-center rounded-xl border-2 border-[#f7e77b] shadow-[#f7e77b] shadow-lg '>
+
             <Card SingleReview={reviews[0]}/> 
 
-            <div className="buttons">
-                <button>
+            <div className="buttons mb-6">
+                <button className='p-3 text-3xl shadow-black hover:shadow-xl'>
                     <BsFillArrowLeftSquareFill/>
                 </button>
-                <button>
+                <button className='p-3 text-3xl shadow-black hover:shadow-lg'>
                     <BsFillArrowRightSquareFill/>
                 </button>    
             </div>
 
-            <div className="random-review">
+            <div className="random-review py-4 px-10 mb-8 text-lg font-medium bg-[#A04747] text-white">
                 <button>Suprise Me</button>
             </div>
         </div>
