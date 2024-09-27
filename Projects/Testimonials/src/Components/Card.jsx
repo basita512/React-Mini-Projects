@@ -25,8 +25,7 @@ const Card = (props) => {
             <div className="quote relative p-8 max-w-md mx-auto">
                 <FaQuoteLeft className='quotes absolute top-4 left-0 text-4xl'/>
                 <div className="description m-4">{SingleReview.text}</div>
-                <FaQuoteRight className='quotes absolute bottom-4 right-0 text-4xl'/>
-                
+                <FaQuoteRight className='quotes absolute bottom-4 right-0 text-4xl'/>    
             </div>
 
             
