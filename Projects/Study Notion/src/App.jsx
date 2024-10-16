@@ -1,31 +1,31 @@
 import { useState } from 'react'
+import { Routes, Route } from 'react-router-dom'
 import './App.css'
+import Home from './Pages/Home.jsx'
+import Navbar from './Components/Navbar.jsx'
+import Dashboard from './Pages/Dashboard.jsx'
+import Login from './Components/LoginForm.jsx'
+import Signup from './Components/SignupForm.jsx'
+import LoginForm from './Components/LoginForm.jsx'
+import SignupForm from './Components/SignupForm.jsx'
 
 function App() {
+    const [isLoggedIn, setLogin] = useState(false)
 
     return (
-        <div className="w-full h-full bg-gradient-to-r from-black via-blue-950 to-black">
-            <div className="container">
-                <div className='flex justify-between items-center w-full'>
-                    <div className="title">
-                        <p className='m-4 text-white'>StudyNotion</p>
-                    </div>
-
-                    <div className="menu-bar flex ">
-                        <p className="menu-items">Home</p>
-                        <p className="menu-items">About</p>
-                        <p className="menu-items">Contact</p>
-                    </div>
-
-                    <div className="loginBar flex ">
-                        <p className="login">Log in</p>
-                        <p className="login">Sign up</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div className="app bg-gradient-to-b from-black to-[#270117] w-screen min-h-screen"> 
         
-        
+            <Navbar isLoggedIn={isLoggedIn} setLogin={setLogin} />
+            {/* <LoginForm/> */}
+            {/* <SignupForm/> */}
+            <Routes>
+                <Route path='/' element={<Home/>} ></Route>
+                <Route path='/dashboard' element={<Dashboard/>} ></Route>
+                <Route path='/login' element={<Login/>} ></Route>
+                <Route path='/signup' element={<Signup/>} ></Route>
+            </Routes>
+            
+        </div> 
     )
 }
 
