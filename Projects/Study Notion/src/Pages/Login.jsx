@@ -1,5 +1,6 @@
 import React from 'react'
 import Template from '../Components/Template.jsx'
+import loginImg from '../Assets/login.png'
 
 const Login = (props) => {
     let isLoggedIn = props.isLoggedIn
