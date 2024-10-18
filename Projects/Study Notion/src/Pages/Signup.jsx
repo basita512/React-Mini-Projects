@@ -1,7 +1,8 @@
 import React from 'react'
 import signupImg from '../Assets/signup.png'
+import Template from '../Components/Template'
 
-const Signup = () => {
+const Signup = ({setLogin}) => {
     return (
         <div>
             <Template

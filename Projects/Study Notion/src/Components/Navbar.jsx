@@ -29,16 +29,16 @@ const Navbar = (props) => {
 
         <div className="buttons text-white flex gap-4">
             { !isLoggedIn &&
-                <Link path='/login' >
-                    <button>
+                <Link to='/login' >
+                    <button type='button'>
                         Login
                     </button>
                 </Link>
             }
 
             { !isLoggedIn &&
-                <Link path='/signup' >
-                    <button>
+                <Link to='/signup' >
+                    <button type='button' >
                         Signup
                     </button>
                 </Link>

@@ -14,7 +14,7 @@ const Template = (title, des1, des2, image, formType, setLogin) => {
                     <span>{des2}</span>
                 </p>
 
-                {formType === "signup" ? (<SignupForm/>) : (<LoginForm/>)}
+                {formType === "signup" ? (<SignupForm setLogin={setLogin}/>) : (<LoginForm setLogin={setLogin} />)}
                 
                 <div className="or">
                     <div className=""></div>

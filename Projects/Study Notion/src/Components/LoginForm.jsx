@@ -1,28 +1,40 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { IoMdEye } from "react-icons/io";
 import { IoMdEyeOff } from "react-icons/io";
+import { even } from 'prelude-ls';
+import toast from 'react-hot-toast';
 
-const LoginForm = () => {
+const LoginForm = ({setLogin}) => {
     const [formData, setFromData] = useState({
         email : "",
         password : ""
     })
     const [showPassword, setShowPassword] = useState(false)
+    const navigate = useNavigate()
 
     const handleForm = () => {
-        const {name, type, value} = event.target
-        setFromData((prevsData) => {
-            return {
-                ...prevsData,
-                [name] : value,
-            }
+        // const {name, type, value} = event.target
+        setFromData((prevsData) => ({
+            ...prevsData,
+            [event.target.name] : event.target.value
+            // return {
+            //     ...prevsData,
+            //     [name] : value,
+            // }
         
-        })
+        }))
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        setLogin(true)
+        toast.success("Logged in")
+        navigate("/dashboard")
     }
 
     return (
-        <form action="" className=''>
+        <form onSubmit={handleSubmit} className='text-white'>
             <label htmlFor="email">
                 <p>Email Address <sup className='text-red-500'>*</sup></p>
                 <input 

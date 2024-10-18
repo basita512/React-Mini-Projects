@@ -5,6 +5,7 @@ import { IoMdEyeOff } from "react-icons/io";
 const SignupForm = (props) => {
     let showPassword = props.showPassword
     let setShowPassword = props.setShowPassword
+    let setLogin = props.setLogin
 
     const [signUpData, setSignUpData] = useState({
         firstName : "",
@@ -25,7 +26,7 @@ const SignupForm = (props) => {
     }
 
     return (
-        <form action="">
+        <form action="" className='text-white'>
             <div className="role rounded-full flex justify-evenly py-2 bg-lime-300 w-64">
                 <button className='bg-gray-600 px-6 py-2 text-white rounded-full mx-2'>Student</button>
                 <button className='bg-gray-600 px-6 py-2 text-white rounded-full mx-2'>Instructor</button>

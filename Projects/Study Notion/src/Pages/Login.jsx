@@ -2,9 +2,8 @@ import React from 'react'
 import Template from '../Components/Template.jsx'
 import loginImg from '../Assets/login.png'
 
-const Login = (props) => {
-    let isLoggedIn = props.isLoggedIn
-    let setLogin = props.setLogin
+const Login = ({setLogin}) => {
+    //let setLogin = props.setLogin
 
     return (
         <div>
