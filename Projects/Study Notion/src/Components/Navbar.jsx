@@ -21,9 +21,9 @@ const Navbar = (props) => {
 
         <nav className=''>
             <ul className='text-white flex gap-4'>
-                <li> <Link path='/' >Home </Link> </li>
-                <li> <Link path='/' >About </Link> </li>
-                <li> <Link path='/' >Contact</Link> </li>
+                <li> <Link to='/' >Home </Link> </li>
+                <li> <Link to='/' >About </Link> </li>
+                <li> <Link to='/' >Contact</Link> </li>
             </ul>
         </nav>
 
@@ -45,7 +45,7 @@ const Navbar = (props) => {
             }
 
             { isLoggedIn &&
-                <Link path='/logout' >
+                <Link to='/logout' >
                     <button onClick={handleSignIn}>
                         Log Out
                     </button>
@@ -53,7 +53,7 @@ const Navbar = (props) => {
             }
 
             { isLoggedIn &&
-                <Link path='/dashboard' >
+                <Link to='/dashboard' >
                     <button onClick={handleSignIn}>
                         Dashboard
                     </button>

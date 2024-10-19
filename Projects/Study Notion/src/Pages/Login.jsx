@@ -3,7 +3,8 @@ import Template from '../Components/Template.jsx'
 import loginImg from '../Assets/login.png'
 
 const Login = ({setLogin}) => {
-    //let setLogin = props.setLogin
+    console.log("Inside login template")
+    console.log("Login image:", loginImg);
 
     return (
         <div>
@@ -15,7 +16,7 @@ const Login = ({setLogin}) => {
                 formType = "login"
                 setLogin = {setLogin}
             />
-        </div>
+        </div>   
     )
 }
 

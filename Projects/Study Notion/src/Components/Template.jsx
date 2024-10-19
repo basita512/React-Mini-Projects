@@ -2,16 +2,21 @@ import React from 'react'
 import SignupForm from './SignupForm'
 import LoginForm from './LoginForm'
 import { FcGoogle } from "react-icons/fc";
+import frmaeImg from '../Assets/frame.png'
 
-const Template = (title, des1, des2, image, formType, setLogin) => {
+const Template = ({title, desc1, desc2, image, formType, setLogin}) => {
+    console.log("Hiii")
+    console.log("Template props:", { title, desc1, desc2, image });
+    console.log("FormType is", {formType})
+
     return (
         <div>
             
-            <div className="form">
+            <div className="form text-white">
                 <h1>{title}</h1>
                 <p>
-                    <span>{des1}</span>
-                    <span>{des2}</span>
+                    <span>{desc1}</span>
+                    <span>{desc2}</span>
                 </p>
 
                 {formType === "signup" ? (<SignupForm setLogin={setLogin}/>) : (<LoginForm setLogin={setLogin} />)}
@@ -26,7 +31,7 @@ const Template = (title, des1, des2, image, formType, setLogin) => {
             </div>
 
             <div className="display">
-                <img src="../Assets/frame.png" alt="bg-frame" width={558} height={504} loading='lazy' />
+                <img src={frmaeImg} alt="bg-frame" width={558} height={504} loading='lazy' />
                 <img src={image} alt="display-image" width={558} height={504} loading='lazy' />
             </div>
 

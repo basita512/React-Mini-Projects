@@ -36,52 +36,56 @@ const SignupForm = (props) => {
             {/* First-name and Last-name */}
             <div className="first-last-name flex">
                 <label htmlFor="firstName">
-                    <p>First Name <sup>*</sup></p>
+                    <p>First Name <sup className='text-red-500'>*</sup></p>
                     <input 
                         type="text"
                         name='firstName'
                         value={signUpData.firstName}
                         placeholder='Enter first name'
                         required
-                        onChange={handleSignUpData} />
+                        onChange={handleSignUpData}
+                        className='text-black' />
                 </label>
 
 
                 <label htmlFor="lastName">
-                    <p>Last Name <sup>*</sup></p>
+                    <p>Last Name <sup className='text-red-500'>*</sup></p>
                     <input 
                         type="text"
                         name='lastName'
                         value={signUpData.lastName}
                         placeholder='Enter last name'
                         required
-                        onChange={handleSignUpData} />
+                        onChange={handleSignUpData}
+                        className='text-black' />
                 </label>
             </div>
 
 
             {/* Email */}
             <label htmlFor="email">
-                <p>Email Address <sup>*</sup></p>
+                <p>Email Address <sup className='text-red-500'>*</sup></p>
                 <input 
                     type="email"
                     name='email'
                     value={signUpData.email}
                     placeholder='Enter email id'
                     required
-                    onChange={handleSignUpData} />
+                    onChange={handleSignUpData}
+                    className='text-black' />
             </label>
 
 
             {/* Passwords */}
             <label htmlFor="createPS">
-                <p>Create Password <sup>*</sup></p>
+                <p>Create Password <sup className='text-red-500'>*</sup></p>
                 <input 
                     type={showPassword ? ("text") : ("password")}
                     name='createPS'
                     value={signUpData.createPS}
                     required
-                    onChange={handleSignUpData} />
+                    onChange={handleSignUpData}
+                    className='text-black' />
 
                 <span onClick={() => setShowPassword((show) => !show)}>
                     {showPassword ? (<IoMdEye/>) : (<IoMdEyeOff/>) }
@@ -89,13 +93,14 @@ const SignupForm = (props) => {
             </label>
 
             <label htmlFor="">
-                <p>Confirm Password <sup>*</sup> </p>
+                <p>Confirm Password <sup className='text-red-500'>*</sup> </p>
                 <input 
                     type={showPassword ? ("text") : ("password")}
                     name='confirmPS'
                     value={signUpData.confirmPS}
                     required
-                    onChange={handleSignUpData} />
+                    onChange={handleSignUpData}
+                    className='text-black' />
 
                 <span onClick={() => setShowPassword((show) => !show)}>
                     {showPassword ? (<IoMdEye/>) : (<IoMdEyeOff/>) }

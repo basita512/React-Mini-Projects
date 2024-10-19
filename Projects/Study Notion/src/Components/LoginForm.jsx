@@ -2,27 +2,21 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import { IoMdEye } from "react-icons/io";
 import { IoMdEyeOff } from "react-icons/io";
-import { even } from 'prelude-ls';
 import toast from 'react-hot-toast';
 
-const LoginForm = ({setLogin}) => {
-    const [formData, setFromData] = useState({
+const LoginForm = ({ setLogin }) => {
+    const [formData, setFormData] = useState({
         email : "",
         password : ""
     })
     const [showPassword, setShowPassword] = useState(false)
     const navigate = useNavigate()
 
-    const handleForm = () => {
-        // const {name, type, value} = event.target
-        setFromData((prevsData) => ({
+    const handleForm = (event) => {
+        const {name, value} = event.target
+        setFormData((prevsData) => ({
             ...prevsData,
-            [event.target.name] : event.target.value
-            // return {
-            //     ...prevsData,
-            //     [name] : value,
-            // }
-        
+            [name] : value
         }))
     }
 
@@ -35,6 +29,7 @@ const LoginForm = ({setLogin}) => {
 
     return (
         <form onSubmit={handleSubmit} className='text-white'>
+
             <label htmlFor="email">
                 <p>Email Address <sup className='text-red-500'>*</sup></p>
                 <input 
@@ -44,18 +39,19 @@ const LoginForm = ({setLogin}) => {
                     value={formData.email}
                     onChange={handleForm}
                     placeholder='Enter email'
+                    className='text-black'
                     />
             </label>
             
             <label htmlFor="password">
                 <p>Password <sup className='text-red-500'>*</sup></p>
                 <input 
-                    type={showPassword ? ("text") : ("password")}
+                    type={showPassword ? "text" : "password"}
                     name='password'
-                    required
                     value={formData.password}
                     onChange={handleForm}
-                    placeholder='Enter password' />
+                    placeholder='Enter password'
+                    className='text-black' />
 
                 <span onClick={() => setShowPassword((show) => !show)}>
                     {showPassword ? (<IoMdEye/>) : (<IoMdEyeOff/>)}
@@ -66,6 +62,7 @@ const LoginForm = ({setLogin}) => {
                 </Link>
             </label>
             
+            {/* made onSubmit handle to clicking sign in button */}
             <button>Sign in</button>
         </form>
     )
