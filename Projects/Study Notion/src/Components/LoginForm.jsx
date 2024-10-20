@@ -5,7 +5,7 @@ import { IoMdEyeOff } from "react-icons/io";
 import toast from 'react-hot-toast';
 
 const LoginForm = ({ setLogin }) => {
-    const [formData, setFormData] = useState({
+    const [loginData, setLoginData] = useState({
         email : "",
         password : ""
     })
@@ -14,7 +14,7 @@ const LoginForm = ({ setLogin }) => {
 
     const handleForm = (event) => {
         const {name, value} = event.target
-        setFormData((prevsData) => ({
+        setLoginData((prevsData) => ({
             ...prevsData,
             [name] : value
         }))
@@ -24,6 +24,11 @@ const LoginForm = ({ setLogin }) => {
         event.preventDefault()
         setLogin(true)
         toast.success("Logged in")
+
+        const loginAccData = {
+            ...loginData
+        }
+        console.log("Sign in account details are: ", loginAccData)
         navigate("/dashboard")
     }
 
@@ -36,7 +41,7 @@ const LoginForm = ({ setLogin }) => {
                     type="email"
                     name='email'
                     required
-                    value={formData.email}
+                    value={loginData.email}
                     onChange={handleForm}
                     placeholder='Enter email'
                     className='text-black'
@@ -48,14 +53,14 @@ const LoginForm = ({ setLogin }) => {
                 <input 
                     type={showPassword ? "text" : "password"}
                     name='password'
-                    value={formData.password}
+                    value={loginData.password}
                     onChange={handleForm}
                     placeholder='Enter password'
                     className='text-black' />
 
-                <span onClick={() => setShowPassword((show) => !show)}>
+                {/* <span onClick={() => setShowPassword((show) => !show)}>
                     {showPassword ? (<IoMdEye/>) : (<IoMdEyeOff/>)}
-                </span>
+                </span> */}
 
                 <Link to='/'>
                     <p>Forget Password</p>

@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
+import toast from 'react-hot-toast';
 import { IoMdEye } from "react-icons/io";
 import { IoMdEyeOff } from "react-icons/io";
+import { useNavigate } from 'react-router-dom';
 
 const SignupForm = (props) => {
     let showPassword = props.showPassword
     let setShowPassword = props.setShowPassword
     let setLogin = props.setLogin
+    let navigate = useNavigate()
 
     const [signUpData, setSignUpData] = useState({
         firstName : "",
@@ -15,8 +18,8 @@ const SignupForm = (props) => {
         confirmPS : ""
     })
 
-    const handleSignUpData = () => {
-        const {name, type, value} = event.target
+    const handleSignUpData = (event) => {
+        const {name, value} = event.target
         setSignUpData((prevData) => {
             return {
                 ...prevData,
@@ -25,8 +28,25 @@ const SignupForm = (props) => {
         })
     }
 
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        if (signUpData.createPS != signUpData.confirmPS) {
+            toast.error("Passwords do not match")
+            return
+        } 
+        setLogin(true)
+        toast.success("Account created succesfully")
+        const accountData = {
+            ...signUpData
+        }
+
+        console.log("Account details are: ", accountData)
+        navigate('/dashboard')
+    }
+
+
     return (
-        <form action="" className='text-white'>
+        <form onSubmit={handleSubmit} className='text-white'>
             <div className="role rounded-full flex justify-evenly py-2 bg-lime-300 w-64">
                 <button className='bg-gray-600 px-6 py-2 text-white rounded-full mx-2'>Student</button>
                 <button className='bg-gray-600 px-6 py-2 text-white rounded-full mx-2'>Instructor</button>
@@ -87,9 +107,9 @@ const SignupForm = (props) => {
                     onChange={handleSignUpData}
                     className='text-black' />
 
-                <span onClick={() => setShowPassword((show) => !show)}>
+                {/* <span onClick={() => setShowPassword((show) => !show)}>
                     {showPassword ? (<IoMdEye/>) : (<IoMdEyeOff/>) }
-                </span>
+                </span> */} 
             </label>
 
             <label htmlFor="">
@@ -102,9 +122,9 @@ const SignupForm = (props) => {
                     onChange={handleSignUpData}
                     className='text-black' />
 
-                <span onClick={() => setShowPassword((show) => !show)}>
+                {/* <span onClick={() => setShowPassword((show) => !show)}>
                     {showPassword ? (<IoMdEye/>) : (<IoMdEyeOff/>) }
-                </span>
+                </span> */}
             </label>
 
 

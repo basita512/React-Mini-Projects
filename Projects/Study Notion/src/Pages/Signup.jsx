@@ -3,7 +3,6 @@ import signupImg from '../Assets/signup.png'
 import Template from '../Components/Template'
 
 const Signup = ({setLogin}) => {
-    console.log("Inside sign up Template")
     return (
         <div>
             <Template

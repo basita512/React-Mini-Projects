@@ -5,8 +5,6 @@ import { FcGoogle } from "react-icons/fc";
 import frmaeImg from '../Assets/frame.png'
 
 const Template = ({title, desc1, desc2, image, formType, setLogin}) => {
-    console.log("Hiii")
-    console.log("Template props:", { title, desc1, desc2, image });
     console.log("FormType is", {formType})
 
     return (

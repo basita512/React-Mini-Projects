@@ -4,8 +4,8 @@ import './App.css'
 import Home from './Pages/Home.jsx'
 import Navbar from './Components/Navbar.jsx'
 import Dashboard from './Pages/Dashboard.jsx'
-import Login from './Components/LoginForm.jsx'
-import Signup from './Components/SignupForm.jsx'
+import Login from './Pages/Login.jsx'
+import Signup from './Pages/Signup.jsx'
 import LoginForm from './Components/LoginForm.jsx'
 import SignupForm from './Components/SignupForm.jsx'
 import Template from './Components/Template.jsx'
@@ -17,9 +17,7 @@ function App() {
         <div className="app bg-gradient-to-b from-black to-[#270117] w-screen min-h-screen"> 
         
             <Navbar isLoggedIn={isLoggedIn} setLogin={setLogin} />
-            <Template/>
-            {/* <LoginForm/> */}
-            {/* <SignupForm/> */}
+
             <Routes>
                 <Route path='/' element={<Home/>} ></Route>
                 <Route path='/dashboard' element={<Dashboard/>} ></Route>
