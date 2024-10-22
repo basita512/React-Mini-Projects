@@ -12,6 +12,11 @@ body, html {
 }
 
 
-/* .menu-items, .login {
-    @apply py-1 px-4 m-4 text-white bg-black opacity-60 rounded-md
-} */
+.nav-btns {
+    @apply gap-4 bg-[#505b6649]  px-5 py-2 rounded-md
+}
+
+input {
+    @apply text-white py-2 px-3 rounded-md mt-2 mb-4 w-full max-w-[450px] focus:outline-none
+            bg-gray-600 bg-opacity-60 focus:bg-gray-800 focus:bg-opacity-60 placeholder-gray-400 focus:border-2 focus:border-pink-300
+}

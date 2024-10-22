@@ -46,15 +46,14 @@ const SignupForm = (props) => {
 
 
     return (
-        <form onSubmit={handleSubmit} className='text-white'>
-            <div className="role rounded-full flex justify-evenly py-2 bg-lime-300 w-64">
+        <form onSubmit={handleSubmit} className='text-white mt-10'>
+            <div className="role rounded-full flex justify-evenly py-2 bg-lime-300 w-64 mb-4">
                 <button className='bg-gray-600 px-6 py-2 text-white rounded-full mx-2'>Student</button>
                 <button className='bg-gray-600 px-6 py-2 text-white rounded-full mx-2'>Instructor</button>
             </div>
 
 
             {/* First-name and Last-name */}
-            <div className="first-last-name flex">
                 <label htmlFor="firstName">
                     <p>First Name <sup className='text-red-500'>*</sup></p>
                     <input 
@@ -64,12 +63,12 @@ const SignupForm = (props) => {
                         placeholder='Enter first name'
                         required
                         onChange={handleSignUpData}
-                        className='text-black' />
+                        className=' mr-4' />
                 </label>
 
 
                 <label htmlFor="lastName">
-                    <p>Last Name <sup className='text-red-500'>*</sup></p>
+                    <p className=''>Last Name <sup className='text-red-500'>*</sup></p>
                     <input 
                         type="text"
                         name='lastName'
@@ -77,9 +76,8 @@ const SignupForm = (props) => {
                         placeholder='Enter last name'
                         required
                         onChange={handleSignUpData}
-                        className='text-black' />
+                         />
                 </label>
-            </div>
 
 
             {/* Email */}
@@ -92,7 +90,7 @@ const SignupForm = (props) => {
                     placeholder='Enter email id'
                     required
                     onChange={handleSignUpData}
-                    className='text-black' />
+                     />
             </label>
 
 
@@ -105,7 +103,7 @@ const SignupForm = (props) => {
                     value={signUpData.createPS}
                     required
                     onChange={handleSignUpData}
-                    className='text-black' />
+                     />
 
                 {/* <span onClick={() => setShowPassword((show) => !show)}>
                     {showPassword ? (<IoMdEye/>) : (<IoMdEyeOff/>) }
@@ -120,15 +118,18 @@ const SignupForm = (props) => {
                     value={signUpData.confirmPS}
                     required
                     onChange={handleSignUpData}
-                    className='text-black' />
+                     />
 
-                {/* <span onClick={() => setShowPassword((show) => !show)}>
-                    {showPassword ? (<IoMdEye/>) : (<IoMdEyeOff/>) }
+                {/* <span className='absolute'
+                     onClick={() => setShowPassword((show) => !show)}>
+                        {showPassword ? (<IoMdEye/>) : (<IoMdEyeOff/>) }
                 </span> */}
             </label>
 
-
-            <button>Create Account</button>
+            <br />
+            <button className='my-4 py-2 bg-yellow-400 text-black font-medium w-full text-center rounded-md max-w-[450px]'>
+                Create Account
+            </button>
         </form>
     )
 }

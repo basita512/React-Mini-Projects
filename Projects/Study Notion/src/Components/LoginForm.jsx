@@ -33,7 +33,7 @@ const LoginForm = ({ setLogin }) => {
     }
 
     return (
-        <form onSubmit={handleSubmit} className='text-white'>
+        <form onSubmit={handleSubmit} className='text-white mt-6'>
 
             <label htmlFor="email">
                 <p>Email Address <sup className='text-red-500'>*</sup></p>
@@ -44,7 +44,6 @@ const LoginForm = ({ setLogin }) => {
                     value={loginData.email}
                     onChange={handleForm}
                     placeholder='Enter email'
-                    className='text-black'
                     />
             </label>
             
@@ -55,8 +54,7 @@ const LoginForm = ({ setLogin }) => {
                     name='password'
                     value={loginData.password}
                     onChange={handleForm}
-                    placeholder='Enter password'
-                    className='text-black' />
+                    placeholder='Enter password' />
 
                 {/* <span onClick={() => setShowPassword((show) => !show)}>
                     {showPassword ? (<IoMdEye/>) : (<IoMdEyeOff/>)}
@@ -68,7 +66,9 @@ const LoginForm = ({ setLogin }) => {
             </label>
             
             {/* made onSubmit handle to clicking sign in button */}
-            <button>Sign in</button>
+            <button className='my-4 py-2 bg-yellow-400 text-black font-medium w-full text-center rounded-md max-w-[450px]'>
+                Sign in
+            </button>
         </form>
     )
 }

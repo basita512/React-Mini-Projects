@@ -14,7 +14,7 @@ function App() {
     const [isLoggedIn, setLogin] = useState(false)
 
     return (
-        <div className="app bg-gradient-to-b from-black to-[#270117] w-screen min-h-screen"> 
+        <div className="app bg-gradient-to-b from-black to-[#270117] w-screen min-h-screen flex flex-col "> 
         
             <Navbar isLoggedIn={isLoggedIn} setLogin={setLogin} />
 

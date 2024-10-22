@@ -15,23 +15,23 @@ const Navbar = (props) => {
     }
 
   return (
-    <div className='flex justify-evenly p-4'>
+    <div className='flex justify-evenly mt-3 flex-wrap '> 
         <Link to='/'>
-            <img src={Logo} alt="logo" width={160} height={32} loading='lazy' />
+            <img className='py-2' src={Logo} alt="logo" width={160} height={32} loading='lazy' />
         </Link>
 
         <nav className=''>
-            <ul className='text-white flex gap-4'>
-                <li> <Link to='/' >Home </Link> </li>
-                <li> <Link to='/' >About </Link> </li>
-                <li> <Link to='/' >Contact</Link> </li>
+            <ul className='text-white flex gap-8'>
+                <li className='py-2'> <Link to='/'  >Home </Link> </li>
+                <li className='py-2'> <Link to='/'  >About </Link> </li>
+                <li className='py-2'> <Link to='/'  >Contact</Link> </li>
             </ul>
         </nav>
 
         <div className="buttons text-white flex gap-4">
             { !isLoggedIn &&
                 <Link to='/login' >
-                    <button type='button'>
+                    <button type='button' className='nav-btns'>
                         Login
                     </button>
                 </Link>
@@ -39,7 +39,7 @@ const Navbar = (props) => {
 
             { !isLoggedIn &&
                 <Link to='/signup' >
-                    <button type='button' >
+                    <button type='button' className='nav-btns' >
                         Signup
                     </button>
                 </Link>
@@ -47,7 +47,7 @@ const Navbar = (props) => {
 
             { isLoggedIn &&
                 <Link to='/' >
-                    <button onClick={handleSignIn}>
+                    <button onClick={handleSignIn} className='nav-btns'>
                         Log Out
                     </button>
                 </Link>
@@ -55,7 +55,7 @@ const Navbar = (props) => {
 
             { isLoggedIn &&
                 <Link to='/dashboard' >
-                    <button onClick={handleSignIn}>
+                    <button onClick={handleSignIn} className='nav-btns'>
                         Dashboard
                     </button>
                 </Link>
