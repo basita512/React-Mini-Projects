@@ -5,11 +5,12 @@ import { IoMdEyeOff } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
 
 const SignupForm = (props) => {
-    let showPassword = props.showPassword
-    let setShowPassword = props.setShowPassword
     let setLogin = props.setLogin
     let navigate = useNavigate()
 
+    const [showCreatePassword, setShowCreatePassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const [accountType, setAccountType] = useState("student")
     const [signUpData, setSignUpData] = useState({
         firstName : "",
         lastName : "",
@@ -44,12 +45,19 @@ const SignupForm = (props) => {
         navigate('/dashboard')
     }
 
-
     return (
         <form onSubmit={handleSubmit} className='text-white mt-10'>
-            <div className="role rounded-full flex justify-evenly py-2 bg-lime-300 w-64 mb-4">
-                <button className='bg-gray-600 px-6 py-2 text-white rounded-full mx-2'>Student</button>
-                <button className='bg-gray-600 px-6 py-2 text-white rounded-full mx-2'>Instructor</button>
+            <div className="role rounded-full flex justify-evenly py-2 bg-[#505b6649] w-64 mb-4 gap-x-1">
+                <button 
+                    onClick={() => {setAccountType("student")}}
+                    className= {`${accountType === "student" ? "bg-yellow-400 text-black" : "text-gray-400 bg-transparent"} rounded-full  px-6 py-2 transition-all duration-300 ease-in-out`}>
+                        Student
+                </button>
+                <button 
+                    onClick={() => {setAccountType("instructor")}}
+                    className={`${accountType === "instructor" ? "bg-yellow-400 text-black" : "text-gray-400 bg-transparent"} rounded-full  px-6 py-2 transition-all duration-300 ease-in-out`}>
+                        Instructor
+                </button>
             </div>
 
 
@@ -95,35 +103,37 @@ const SignupForm = (props) => {
 
 
             {/* Passwords */}
-            <label htmlFor="createPS">
+            <label htmlFor="createPS" className='relative'>
                 <p>Create Password <sup className='text-red-500'>*</sup></p>
                 <input 
-                    type={showPassword ? ("text") : ("password")}
+                    type={showCreatePassword ? "text" : "password"}
                     name='createPS'
                     value={signUpData.createPS}
                     required
                     onChange={handleSignUpData}
                      />
 
-                {/* <span onClick={() => setShowPassword((show) => !show)}>
-                    {showPassword ? (<IoMdEye/>) : (<IoMdEyeOff/>) }
-                </span> */} 
+                <span className='absolute right-3 -bottom-0.5'
+                    onClick={() => setShowCreatePassword((show) => !show)}>
+                    {showCreatePassword ? (<IoMdEye fontSize={24}/>) : (<IoMdEyeOff fontSize={24}Off/>) }
+                </span> 
             </label>
 
-            <label htmlFor="">
+            <label htmlFor="confirmPS" className='relative'>
                 <p>Confirm Password <sup className='text-red-500'>*</sup> </p>
                 <input 
-                    type={showPassword ? ("text") : ("password")}
+                    type={showConfirmPassword ? ("text") : ("password")}
                     name='confirmPS'
                     value={signUpData.confirmPS}
                     required
                     onChange={handleSignUpData}
+                    
                      />
 
-                {/* <span className='absolute'
-                     onClick={() => setShowPassword((show) => !show)}>
-                        {showPassword ? (<IoMdEye/>) : (<IoMdEyeOff/>) }
-                </span> */}
+                <span className='absolute right-3 -bottom-0.5'
+                     onClick={() => setShowConfirmPassword((show) => !show)}>
+                        {showConfirmPassword ? (<IoMdEye fontSize={24}/>) : (<IoMdEyeOff fontSize={24}/>) }
+                </span>
             </label>
 
             <br />

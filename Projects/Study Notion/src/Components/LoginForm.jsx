@@ -47,7 +47,7 @@ const LoginForm = ({ setLogin }) => {
                     />
             </label>
             
-            <label htmlFor="password">
+            <label htmlFor="password" className='relative'>
                 <p>Password <sup className='text-red-500'>*</sup></p>
                 <input 
                     type={showPassword ? "text" : "password"}
@@ -56,9 +56,11 @@ const LoginForm = ({ setLogin }) => {
                     onChange={handleForm}
                     placeholder='Enter password' />
 
-                {/* <span onClick={() => setShowPassword((show) => !show)}>
-                    {showPassword ? (<IoMdEye/>) : (<IoMdEyeOff/>)}
-                </span> */}
+                <span 
+                    onClick={() => setShowPassword((show) => !show)}
+                    className='absolute right-3 top-[86px]'>
+                    {showPassword ? (<IoMdEye fontSize={24}/>) : (<IoMdEyeOff fontSize={24}/>)}
+                </span>
 
                 <Link to='/'>
                     <p>Forget Password</p>
