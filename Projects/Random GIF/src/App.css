@@ -1,3 +1,46 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/*************************** Spinner.jsx ***********************************/
+
+.spinner {
+   position: relative;
+   width: 40px;
+   height: 40px;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.spinner::before,
+.spinner::after {
+   border: 4.8px solid #036163;
+   border-radius: 50%;
+   position: absolute;
+   content: '';
+   display: block;
+}
+
+.spinner::before {
+   width: 24px;
+   height: 24px;
+   border-bottom-color: transparent;
+   border-left-color: transparent;
+   animation: spinner-1o3y8q 0.75s infinite linear reverse;
+}
+
+.spinner::after {
+   animation: spinner-1o3y8q 0.5s infinite linear;
+   height: 40px;
+   width: 40px;
+   border-right-color: transparent;
+   border-top-color: transparent;
+}
+
+@keyframes spinner-1o3y8q {
+   to {
+      transform: rotate(360deg);
+   }
+}
