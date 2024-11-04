@@ -33,17 +33,17 @@ const Random = () => {
     }, [])
 
     return (
-        <div className='bg-[#ffffff68]  w-1/2 h-[500px] mt-10 flex flex-col items-center rounded-lg shadow-md shadow-[#5dad88f6]'>
-            <h1 className='m-4 font-semibold text-2xl text-teal-800'>A RANDOM GIF</h1>
+        <div className='bg-[#fff0e6] border-2 border-[#ffcc99] w-1/2 h-[550px] mt-10 mb-20 flex flex-col items-center rounded-lg shadow-md shadow-[#3e745bf6]'>
+            <h1 className='m-4 font-semibold text-2xl text-teal-800'>SOME RANDOM GIF</h1>
 
-            <div className="gif w-[450px] h-[325px] flex justify-center items-center ">
+            <div className="gif w-[450px] h-[325px] flex justify-center items-center mt-8">
                 {loading ? <Spinner/> : <img src={gif} alt="gif"  className='mx-auto object-cover w-[450px] h-[325px]'/>}
             </div>
 
-            <button className='w-9/12 bg-gradient-to-b from-teal-800 to-teal-600 text-white py-2 my-8 rounded-lg font-semibold text-xl'
+            <button className='w-9/12 bg-[#ff7f50] hover:bg-[#af4f26] text-white py-2 my-8 rounded-lg font-semibold text-xl'
                 onClick={handleGenerateGIF}>
                 Generate
-            </button>
+            </button>          
         </div>
     )
 }
