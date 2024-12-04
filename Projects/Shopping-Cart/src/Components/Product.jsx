@@ -13,9 +13,11 @@ const Product = ({post}) => {
     }
 
     const removeFromCart = () => {
-        dispatch( remove(post))
-        toast.success('Item removed from cart')
+        dispatch( remove(post.id))
+        toast.success('Item removed from cart') 
     }
+
+    const isItemInCart = cart.some((p) => p.id === post.id);
 
     return (
         <div className="hover:scale-105 hover:delay-75 duration-300">
@@ -36,7 +38,7 @@ const Product = ({post}) => {
                     <p>{post.price}</p>
                     <div className="">
                         {
-                            cart.some((p) => p.id == post.id) ? (
+                            isItemInCart ? (
                                 <button className=''
                                     onClick={removeFromCart}>
                                         REMOVE ITEM
