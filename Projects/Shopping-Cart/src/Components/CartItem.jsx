@@ -13,13 +13,13 @@ const CartItem = ({item, itemIndex}) => {
     }
 
     return (
-        <div>
-            <div className="image">
-                <img src={item.image} alt={item.title} />
+        <div className='flex justify-between w-full gap-12'>
+            <div className="image md:w-[300px] w-full flex justify-center items-center">
+                <img src={item.image} alt={item.title} className='w-[300px] md:w-[50%] lg:w-full'/>
             </div>
 
             <div className="">
-                <p>{item.title}</p>
+                <p className='text'>{item.title}</p>
                 <p>{item.description}</p>
 
                 <div className="">

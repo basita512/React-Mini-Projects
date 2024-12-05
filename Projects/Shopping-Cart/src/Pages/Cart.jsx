@@ -13,11 +13,11 @@ const Cart = () => {
     }, [cart])
 
     return (
-        <div>
+        <div className=''>
             {
                 cart.length > 0 ? (
-                    <div className="">
-                        <div className="cart">
+                    <div className="flex gap-16 max-w-6xl flex-wrap lg:flex-nowrap mx-auto">
+                        <div className="cart lg:w-[70%]">
                             {
                                 cart.map( (item, index) => (
                                     <CartItem key={item.id} item={item} itemIndex={index}  />
