@@ -21,10 +21,10 @@ const Navbar = () => {
 
                 <NavLink to='/cart' >
                     <div className="relative">
-                        <FaShoppingCart className='text-white mt-1 hover:text-green-400'/>
+                        <FaShoppingCart className='text-white mt-1 hover:text-green-600'/>
                         {
                             cart.length > 0 && 
-                            <span className='absolute bg-green-600 text-white text-xs px-1 rounded-full -right-2 -top-2 animate-bounce'>
+                            <span className='absolute hover:bg-white hover:text-green-600 bg-green-600 text-white text-xs px-1 rounded-full -right-2 -top-2 animate-bounce'>
                                 {cart.length}
                             </span>
                         }
