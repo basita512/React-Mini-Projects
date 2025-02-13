@@ -10,8 +10,6 @@ These projects helped in understanding:
 - API integration
 - Authentication flows
 - Custom hooks
-- Responsive design
-- Full-stack development
 - Modern styling with Tailwind CSS
 
 ## Projects Overview
